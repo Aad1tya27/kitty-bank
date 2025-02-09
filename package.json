@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "final-purr-pay",
   "private": true,
   "scripts": {
     "build": "turbo build",

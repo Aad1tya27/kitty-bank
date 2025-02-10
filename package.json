@@ -1,8 +1,9 @@
 {
-  "name": "final-purr-pay",
+  "name": "purr-pay",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "db:generate": "cd packages/db && npx prisma generate && cd ../..",
+    "build": "turbo build && npm run db:generate",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

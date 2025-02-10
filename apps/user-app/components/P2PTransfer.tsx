@@ -12,6 +12,16 @@ export const P2PTransferComponent = () => {
     const [success, setSuccess] = useState(false)
 
     const submitHandler = async () => {
+        if(!(amount > 0)) {
+            setErrorActive(true)
+            setErrorVal("Nice try")
+            setTimeout(() => {
+                setErrorActive(false)
+                setErrorVal("")
+            }, 2000);
+            return
+        }
+
         const res = await createP2PTransfer(number, amount * 100)
         if (res.message === P2PMessage.Failure) {
             setErrorActive(true)

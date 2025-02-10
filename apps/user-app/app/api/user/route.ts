@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../../lib/auth";
 
 export const GET = async () => {
+    console.log("yo")
     const session = await getServerSession(authOptions);
-    if (session.user) {
+    
+    if (session) {
         return NextResponse.json({
             user: session.user
         })

@@ -1,9 +1,13 @@
 import db from "@repo/db/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
+import { redirect } from 'next/navigation'
 
 async function getName(){
     const session = await getServerSession(authOptions)
+    if (!(session) || !session.user || !session.user.id) {
+        redirect("/api/auth/signin")
+    }
     const user = await db.user.findFirst({
         where:{
             id: Number(session.user.id)
@@ -12,7 +16,7 @@ async function getName(){
             "number": true,
         }
     })
-
+    
     return user
 }
 

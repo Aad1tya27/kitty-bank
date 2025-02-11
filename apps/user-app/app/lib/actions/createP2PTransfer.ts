@@ -31,8 +31,8 @@ export async function createP2PTransfer(number: string, amount: number){
                 userId: Number(session.user.id)
             }
         })
-
-        if(curr_user?.amount && curr_user.amount  < amount){
+        
+        if(curr_user && curr_user.amount  < amount){
             return {
                 message: P2PMessage.LowBalance,
             }
